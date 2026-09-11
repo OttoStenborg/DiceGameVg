@@ -29,13 +29,8 @@ public class Player {
         return firstName;
     }
 
-//    public String getLastName() {
-//        return lastName;
-//    }
 
-
-
-    //Metoder för att spela spelet, första metoden används först i main osv. Hörde att det är viktigt.
+    //Metoder för player logik
     private static boolean containNumber(String text) {
         for (int i = 0; i < text.length(); i++) {
             char c = text.charAt(i);

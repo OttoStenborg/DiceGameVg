@@ -2,6 +2,8 @@ package se.iths.otto.game;
 
 public class Game {
 
+
+    //Metoder för spel lokik
     private static void startaSpelet(Player one, Player two) {
         int i = 0;
         int ii = 0;
@@ -57,6 +59,7 @@ public class Game {
         System.exit(0);
     }
 
+
     //Metod för att spela
     public void spela(){
         while (true) {
@@ -72,8 +75,6 @@ public class Game {
                 IO.println("Startar ett nytt spel!");
             }
         }
-
-
     }
 }
 
