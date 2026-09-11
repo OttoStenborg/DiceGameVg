@@ -2,27 +2,27 @@ package se.iths.otto.game;
 
 public class Game {
 
-    public static void startaSpelet(Player one, Player two) {
+    private static void startaSpelet(Player one, Player two) {
         int i = 0;
         int ii = 0;
         while (i <= 1) {
             IO.readln("Tryck på valfri knapp för att kasta tärning");
             int score = Dice.rollDice();
-            IO.println(two.getFirstName() + " " + score + "!");
-            two.addToScore(score);
+            IO.println(one.getFirstName() + " " + score + "!");
+            one.addToScore(score);
             i++;
         }
         while (ii <= 1) {
             IO.readln("Tryck på valfri knapp för att kasta tärning");
             int score = Dice.rollDice();
-            IO.println(one.getFirstName() + " " + score + "!");
-            one.addToScore(score);
+            IO.println(two.getFirstName() + " " + score + "!");
+            two.addToScore(score);
             ii++;
         }
     }
 
 
-    public static void checkWinner(Player one, Player two) {
+    private static void checkWinner(Player one, Player two) {
         if (one.getScore() > two.getScore()) {
             IO.println(one.getFullName() + " har vunnit!");
             IO.println(one.getScore());
@@ -35,7 +35,7 @@ public class Game {
     }
 
 
-    public static boolean askToPLayAgain() {
+    private static boolean askToPLayAgain() {
         while (true) {
             try {
                 String val = IO.readln("Vill du spela igen (ja eller nej)?   ");
@@ -53,8 +53,27 @@ public class Game {
     }
 
 
-    public static void turnOffGame() {
+    private static void turnOffGame() {
         System.exit(0);
+    }
+
+    //Metod för att spela
+    public void spela(){
+        while (true) {
+            Player playerOne = Player.createPlayer();
+            Player playerTwo = Player.createPlayer();
+            startaSpelet(playerOne, playerTwo);
+            checkWinner(playerOne, playerTwo);
+            boolean spelaIgen = askToPLayAgain();
+            if (!spelaIgen) {
+                IO.println("Tack för att du har spelat!");
+                Game.turnOffGame();
+            } else if (spelaIgen) {
+                IO.println("Startar ett nytt spel!");
+            }
+        }
+
+
     }
 }
 
