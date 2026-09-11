@@ -5,16 +5,14 @@ public class Player {
     private String lastName;
     private int score;
 
+    //Konstruktör
     public Player(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
 
-
-        //Konstruktör
-
     }
 
-    //Getters och addtoscore
+    //Getters
     public void addToScore(int score) {
         this.score += score;
     }
@@ -31,9 +29,9 @@ public class Player {
         return firstName;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
+//    public String getLastName() {
+//        return lastName;
+//    }
 
 
     //Metoder för att spela spelet, första metoden används först i main osv. Hörde att det är viktigt.
