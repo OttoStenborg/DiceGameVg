@@ -1,99 +1,34 @@
 package se.iths.otto.game;
 
 public class Game {
-    private String firstName;
-    private String lastName;
-    private int score;
 
-    public Game(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-
-
-    //Konstruktör
-
-    }
-
-    //Getters och addtoscore
-    public void addToScore(int score) {
-        this.score += score;
-    }
-
-    public String getFullName() {
-        return firstName + " " + lastName;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-
-    //Metoder för att spela spelet, första metoden används först i main osv. Hörde att det är viktigt.
-    public static boolean containNumber(String text) {
-        for (int i = 0; i < text.length(); i++) {
-            char c = text.charAt(i);
-            if (Character.isDigit(c)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-    public static Game createPlayer() {
-        while (true) {
-            try {
-                String firstName = IO.readln("Ange förnamn för spelare:   ");
-                String lastName = IO.readln("Ange efternamn för spelare:   ");
-                if (firstName.isEmpty() || lastName.isEmpty()) {
-                    throw new IllegalArgumentException("Du måste ange ett förnamn och förnamn!");
-                }
-                if (containNumber(firstName) || containNumber(lastName)) {
-                    throw new IllegalArgumentException("Du får inte ha siffror i ditt namn");
-                }
-                return new Game(firstName, lastName);
-            } catch (IllegalArgumentException e) {
-                IO.println(e.getMessage());
-            }
-        }
-    }
-
-
-    public static void startaSpelet(Game playerOne, Game playerTwo) {
+    public static void startaSpelet(Player one, Player two) {
         int i = 0;
         int ii = 0;
         while (i <= 1) {
             IO.readln("Tryck på valfri knapp för att kasta tärning");
             int score = Dice.rollDice();
-            IO.println(playerTwo.getFirstName() + " " + score + "!");
-            playerTwo.addToScore(score);
+            IO.println(two.getFirstName() + " " + score + "!");
+            two.addToScore(score);
             i++;
         }
         while (ii <= 1) {
             IO.readln("Tryck på valfri knapp för att kasta tärning");
             int score = Dice.rollDice();
-            IO.println(playerOne.getFirstName() + " " + score + "!");
-            playerOne.addToScore(score);
+            IO.println(one.getFirstName() + " " + score + "!");
+            one.addToScore(score);
             ii++;
         }
     }
 
 
-    public static void checkWinner(Game playerOne, Game playerTwo) {
-        if (playerOne.getScore() > playerTwo.getScore()) {
-            IO.println(playerOne.getFullName() + " har vunnit!");
-            IO.println(playerOne.getScore());
-        } else if (playerOne.getScore() < playerTwo.getScore()) {
-            IO.println(playerTwo.getFullName() + " har vunnit!");
-            IO.println(playerTwo.getScore());
+    public static void checkWinner(Player one, Player two) {
+        if (one.getScore() > two.getScore()) {
+            IO.println(one.getFullName() + " har vunnit!");
+            IO.println(one.getScore());
+        } else if (one.getScore() < two.getScore()) {
+            IO.println(two.getFullName() + " har vunnit!");
+            IO.println(two.getScore());
         } else {
             IO.println("oavgjort");
         }

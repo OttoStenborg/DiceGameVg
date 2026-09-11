@@ -3,11 +3,11 @@ package se.iths.otto.game;
 public class Main {
     static void main() throws IllegalArgumentException {
         while (true) {
-            Game playerOne = Game.createPlayer();
+            Player one = Player.createPlayer();
             IO.println("Andra spelaren");
-            Game playerTwo = Game.createPlayer();
-            Game.startaSpelet(playerOne, playerTwo);
-            Game.checkWinner(playerOne, playerTwo);
+            Player two = Player.createPlayer();
+            Game.startaSpelet(one,two);
+            Game.checkWinner(one, two);
             boolean spelaIgen = Game.askToPLayAgain();
             if (!spelaIgen) {
                 IO.println("Tack för att du har spelat!");
