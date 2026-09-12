@@ -8,3 +8,5 @@ Jag läste på lite om varför man har just en public metod som kör hela progra
 allt i en enda körbar metod. 
 
 Efter testning där jag har försökt att skapa problem i programmet så har koden fångat alla exceptions. Man kan inte ha siffror i sitt namn, man måste svara ja eller nej om man vill spela igen osv.
+
+Under ett möte kan jag berätta mer
